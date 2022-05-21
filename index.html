@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://hikar.org/loc-fix/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     </head>
 
@@ -24,11 +24,11 @@
             </a-assets>
 <a-entity rotation="90 0 0">
                 <a-entity
-                    look-at="[gps-camera]"
+                    look-at="[gps-projected-camera]"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     scale="0.5 0.5 0.5"
-                    gps-entity-place="latitude: 54.50803685088475; longitude: -341.4572474453599;"
+                    gps-projected-entity-place="latitude: 54.50803685088475; longitude: -341.4572474453599;"
                 ><a-animation attribute="rotation" dur="7000" to="0 360 0" easing="linear" repeat="indefinite">
           </a-animation></a-entity></a-entity>
 

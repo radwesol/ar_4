@@ -22,20 +22,16 @@
                     src="assets/asset.gltf"
                 ></a-asset-item>
             </a-assets>
-
+<a-entity rotation="90 0 0">
                 <a-entity
                     look-at="[gps-camera]"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     scale="0.5 0.5 0.5"
                     gps-entity-place="latitude: 54.50803685088475; longitude: -341.4572474453599;"
-                ></a-entity>
-<a-animation attribute="rotation"
-               dur="7000"
-               to="0 360 0"
-               easing= "linear"     
-               repeat="indefinite">
-        </a-animation>
+                ><a-animation attribute="rotation" dur="7000" to="0 360 0" easing="linear" repeat="indefinite">
+          </a-animation></a-entity></a-entity>
+
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
     </body>

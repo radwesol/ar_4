@@ -1,20 +1,22 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://hikar.org/loc-fix/aframe-ar-nft.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
         <a-scene
-            renderer="logarithmicDepthBuffer: true;"
-            embedded
+            vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
-            arjs="sourceType: webcam; debugUIEnabled: false;"
+            renderer="logarithmicDepthBuffer: true;"
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+            id="scene"
+            embedded
+            gesture-detector
         >
             <a-assets>
                 <a-asset-item
@@ -22,17 +24,28 @@
                     src="assets/asset.gltf"
                 ></a-asset-item>
             </a-assets>
-<a-entity rotation="90 0 0">
+
+            <a-marker
+                id="animated-marker"
+                type="pattern"
+                preset="custom"
+                url="assets/marker.patt"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                id="markerA"
+            >
                 <a-entity
-                    look-at="[gps-projected-camera]"
+                    id="bowser-model"
+                    scale="1 1 1"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
-                    scale="0.5 0.5 0.5"
-                    gps-projected-entity-place="latitude: 54.50803685088475; longitude: -341.4572474453599;"
-                ><a-animation attribute="rotation" dur="7000" to="0 360 0" easing="linear" repeat="indefinite">
-          </a-animation></a-entity></a-entity>
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
 
-            <a-camera gps-camera rotation-reader></a-camera>
+            <a-entity camera></a-entity>
         </a-scene>
     </body>
 </html>
